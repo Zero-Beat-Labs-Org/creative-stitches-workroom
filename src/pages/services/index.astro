@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import { services } from '../../data/business';
+
+const title = 'Services | Creative Stitches Workroom, Grand Blanc MI';
+const description = 'Custom draperies and curtains, Roman shades, upholstery and reupholstery, pillows and cushions, and window treatments, handcrafted in Grand Blanc, Michigan.';
+---
+<Base title={title} description={description}>
+  <section>
+    <div class="wrap">
+      <h1>Our services</h1>
+      <p class="lead">A full soft-goods workroom serving Grand Blanc and Genesee County.</p>
+      <div class="grid">
+        {services.map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3>
+            <p>{s.intro}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

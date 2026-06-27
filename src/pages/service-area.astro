@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { business } from '../data/business';
+
+const title = 'Service Area | Creative Stitches Workroom, Grand Blanc & Genesee County MI';
+const description = 'Creative Stitches Workroom serves Grand Blanc, Flint, Burton, Davison, Fenton, and Genesee County, travels up to two hours for the right project, and ships finished work.';
+---
+<Base title={title} description={description}>
+  <section>
+    <div class="wrap">
+      <h1>Where we work</h1>
+      <p class="lead">Based in Grand Blanc, serving Genesee County and beyond.</p>
+      <h2>Towns we serve</h2>
+      <div class="grid">
+        {business.areaServed.map((place) => (
+          <div class="card"><h3>{place}</h3></div>
+        ))}
+      </div>
+      <h2>Travel &amp; shipping</h2>
+      <p>{business.travelNote}</p>
+      <p><a class="btn" href={`tel:${business.phoneE164}`}>Call {business.phone}</a></p>
+    </div>
+  </section>
+</Base>

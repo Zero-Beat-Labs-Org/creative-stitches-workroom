@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+import { business, services } from '../data/business';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+
+const addr = business.address;
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: business.name,
+  description: business.tagline,
+  url: business.url,
+  telephone: business.phoneE164,
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: addr.street,
+    addressLocality: addr.city,
+    addressRegion: addr.region,
+    postalCode: addr.postalCode,
+    addressCountry: addr.country,
+  },
+  areaServed: business.areaServed.map((name) => ({ '@type': 'Place', name })),
+  sameAs: business.sameAs,
+  makesOffer: services.map((s) => ({
+    '@type': 'Offer',
+    itemOffered: { '@type': 'Service', name: s.name },
+  })),
+  // TODO add geo (exact pin) and openingHoursSpecification after the client call.
+};
+
+const nav = [
+  { href: '/', label: 'Home' },
+  { href: '/services/', label: 'Services' },
+  { href: '/service-area/', label: 'Service Area' },
+  { href: '/gallery/', label: 'Gallery' },
+  { href: '/testimonials/', label: 'Reviews' },
+  { href: '/trade/', label: 'To the Trade' },
+  { href: '/contact/', label: 'Contact' },
+];
+const path = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#3a4a3f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={business.name} />
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessSchema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="site-name" href="/">{business.name}</a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <ul>
+            {nav.map((item) => (
+              <li>
+                <a href={item.href} aria-current={path === item.href ? 'page' : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+        <a class="header-phone" href={`tel:${business.phoneE164}`}>{business.phone}</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-grid">
+        <div>
+          <p class="footer-name">{business.name}</p>
+          <p>{business.tagline}</p>
+        </div>
+        <div>
+          <p>{addr.street}<br />{addr.city}, {addr.region} {addr.postalCode}</p>
+          <p><a href={`tel:${business.phoneE164}`}>{business.phone}</a></p>
+        </div>
+        <div>
+          <p>Serving Grand Blanc &amp; Genesee County, plus designer trade.</p>
+          <p class="footer-credit">Site by ZeroBeatLabs</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

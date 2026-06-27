@@ -1,0 +1,30 @@
+---
+import Base from '../../layouts/Base.astro';
+import { business, services } from '../../data/business';
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug }, props: { service: s } }));
+}
+
+const { service } = Astro.props;
+---
+<Base title={service.title} description={service.description}>
+  <section>
+    <div class="wrap">
+      <h1>{service.h1}</h1>
+      <p class="lead">{service.intro}</p>
+      <p class="draft">DRAFT copy, confirm details with the client before launch.</p>
+      {service.sections.map((sec) => (
+        <>
+          <h2>{sec.heading}</h2>
+          <p>{sec.body}</p>
+        </>
+      ))}
+      <h2>Start your project</h2>
+      <p>
+        <a class="btn" href={`tel:${business.phoneE164}`}>Call {business.phone}</a>
+        <a class="btn btn-secondary" href="/contact/">Request a consultation</a>
+      </p>
+    </div>
+  </section>
+</Base>

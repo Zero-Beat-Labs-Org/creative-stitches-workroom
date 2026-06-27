@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import { business, services } from '../data/business';
+
+const title = 'Custom Drapery & Upholstery Workroom in Grand Blanc, MI | Creative Stitches Workroom';
+const description = 'Creative Stitches Workroom handcrafts custom draperies, Roman shades, window treatments, upholstery, and cushions in Grand Blanc, Michigan. 30+ years serving Genesee County. Call 810-423-3416.';
+---
+<Base title={title} description={description}>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Custom drapery, window treatments &amp; upholstery, made in Grand Blanc</h1>
+      <p class="lead">{business.tagline} A full soft-goods workroom: windows, furniture, pillows, and bedding under one roof, made to measure for {business.yearsInBusiness} years.</p>
+      <p>
+        <a class="btn" href={`tel:${business.phoneE164}`}>Call {business.phone}</a>
+        <a class="btn btn-secondary" href="/contact/">Request a consultation</a>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>What we make</h2>
+      <div class="grid">
+        {services.map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3>
+            <p>{s.intro}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="wrap">
+      <h2>Why a real workroom</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>{business.yearsInBusiness} years of craft</h3>
+          <p>Made-to-measure work, cut and sewn by hand, not pulled off a big-box shelf.</p>
+        </div>
+        <div class="card">
+          <h3>Windows and furniture</h3>
+          <p>Most local shops do only windows or only upholstery. We do both, plus pillows and bedding.</p>
+        </div>
+        <div class="card">
+          <h3>Designer friendly</h3>
+          <p>We work directly with interior designers on C.O.M. projects. <a href="/trade/">To the trade &rarr;</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Serving Grand Blanc &amp; Genesee County</h2>
+      <p>{business.travelNote}</p>
+      <p><a class="btn btn-secondary" href="/service-area/">See our service area</a></p>
+    </div>
+  </section>
+</Base>

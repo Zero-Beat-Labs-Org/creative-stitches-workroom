@@ -1,0 +1,107 @@
+// Single source of truth for NAP + services. Used by the LocalBusiness schema,
+// footer, contact page, and the dynamic service pages. Confirmed facts as of
+// 2026-06-27; items marked TODO need the client call before launch.
+
+export const business = {
+  name: 'Creative Stitches Workroom',
+  owner: 'Sherrei Pauls',
+  tagline: 'Custom drapery, window treatments, and upholstery, handcrafted in Grand Blanc, Michigan.',
+  yearsInBusiness: '30+', // TODO confirm 30+ vs 20+ and founding year in client call
+  phone: '810-423-3416',
+  phoneE164: '+18104233416',
+  email: '', // TODO add branded Google Workspace address once provisioned
+  url: 'https://creativestitchesworkroom.com',
+  address: {
+    street: '6182 S Case Ave',
+    city: 'Grand Blanc',
+    region: 'MI',
+    postalCode: '48439',
+    country: 'US',
+  },
+  // geo: { lat: 0, lng: 0 }, // TODO geocode exact pin (Apple Maps weights the pin heavily)
+  // hours: TODO confirm exact set in call; GBP currently shows "Opens 9 AM Mon".
+  //   Add as openingHoursSpecification once known, e.g. Mo-Fr 09:00-17:00 + by appointment.
+  areaServed: [
+    'Grand Blanc', 'Flint', 'Burton', 'Davison', 'Fenton', 'Lake Fenton',
+    'Swartz Creek', 'Goodrich', 'Atlas', 'Holly', 'Ortonville', 'Genesee County',
+  ],
+  travelNote: 'We travel up to roughly two hours for the right project, reaching Metro Detroit and mid-Michigan, and ship finished work beyond that.',
+  // Live profiles only (becomes schema sameAs). Verified from research 2026-06-27.
+  sameAs: [
+    'https://www.facebook.com/creativestitchesworkroom/',
+    'https://www.houzz.com/professionals/upholstery/creative-stitches-workroom-pfvwus-pf~470485693',
+    'https://www.yelp.com/biz/creative-stitches-grand-blanc',
+    'https://reviews.birdeye.com/creative-stitches-148885114480797',
+  ],
+} as const;
+
+export type Service = {
+  slug: string;
+  name: string;
+  title: string; // <title> + meta
+  description: string; // meta description
+  h1: string;
+  intro: string;
+  sections: { heading: string; body: string }[];
+};
+
+// Copy below is ZBL first-draft, on the SEO-Audit Tier 1/2 targets. Mark anything
+// the client must verify; replace [DRAFT] bodies after the call + photo handoff.
+export const services: Service[] = [
+  {
+    slug: 'draperies-curtains',
+    name: 'Custom Draperies & Curtains',
+    title: 'Custom Drapery & Curtains in Grand Blanc, MI | Creative Stitches Workroom',
+    description: 'Made-to-measure custom draperies and curtains for Grand Blanc and Genesee County homes. 30+ years of workroom craftsmanship. Call 810-423-3416.',
+    h1: 'Custom Draperies & Curtains, Made to Measure',
+    intro: 'Every panel is cut, sewn, and finished by hand in our Grand Blanc workroom, sized to your windows and your fabric, not pulled off a big-box shelf.',
+    sections: [
+      { heading: 'Built for your windows', body: '[DRAFT] We make pinch-pleat, ripplefold, grommet, rod-pocket, and tab-top draperies in the fabric, lining, and fullness you choose. Full-height panels, puddled hems, layered sheers, we measure on site and fabricate to fit.' },
+      { heading: 'Work with a real workroom', body: '[DRAFT] After 30+ years serving Grand Blanc and Genesee County, we handle one window or a whole home, and we work directly with interior designers on C.O.M. projects.' },
+    ],
+  },
+  {
+    slug: 'roman-shades',
+    name: 'Custom Roman Shades',
+    title: 'Custom Roman Shades in Grand Blanc & Genesee County, MI | Creative Stitches Workroom',
+    description: 'Handcrafted custom Roman shades, flat, hobbled, and relaxed, lined or blackout, made to measure in Grand Blanc, MI. Call 810-423-3416.',
+    h1: 'Custom Roman Shades, Handcrafted to Fit',
+    intro: 'Flat, hobbled, or relaxed Roman shades in your fabric, with the lining and lift style that suits the room.',
+    sections: [
+      { heading: 'Your fabric, your style', body: '[DRAFT] Light-filtering or blackout lining, cordless and child-safe lift options, mounted inside or outside the frame. We build each shade to the exact opening.' },
+    ],
+  },
+  {
+    slug: 'upholstery',
+    name: 'Upholstery & Reupholstery',
+    title: 'Upholstery & Reupholstery in Grand Blanc, MI | Creative Stitches Workroom',
+    description: 'Furniture reupholstery, cushions, and antique restoration in Grand Blanc and Genesee County. 30+ years of soft-goods craft. Call 810-423-3416.',
+    h1: 'Upholstery & Reupholstery',
+    intro: 'Give a well-built sofa, chair, or heirloom piece another few decades with new fabric, padding, and structure.',
+    sections: [
+      { heading: 'From a single chair to a whole set', body: '[DRAFT] Sofas, chairs, dining seats, benches, headboards, cushions, and antique restoration. We help you choose a durable fabric for how the piece is actually used.' },
+    ],
+  },
+  {
+    slug: 'pillows-cushions',
+    name: 'Pillows & Cushions',
+    title: 'Custom Pillows & Cushions in Michigan | Creative Stitches Workroom',
+    description: 'Custom throw pillows, cushion covers, window-seat, patio, and boat cushions, made to measure in Grand Blanc, MI. Call 810-423-3416.',
+    h1: 'Custom Pillows & Cushions',
+    intro: 'The fast, high-impact way to refresh a room, or to re-cover the cushions the rest of the market ignores.',
+    sections: [
+      { heading: 'Indoor and out', body: '[DRAFT] Throw pillows, bench and window-seat cushions, dining-chair pads, plus patio and boat cushions in outdoor-rated fabric. Sized to your dimensions.' },
+    ],
+  },
+  {
+    slug: 'window-treatments',
+    name: 'Window Treatments',
+    title: 'Custom Window Treatments in Grand Blanc, MI | Creative Stitches Workroom',
+    description: 'Custom valances, cornices, swags, and full window treatments for Grand Blanc and Genesee County. 30+ years of workroom craft. Call 810-423-3416.',
+    h1: 'Custom Window Treatments',
+    intro: 'Valances, cornices, swags, and layered treatments that finish a room, all made to your windows.',
+    sections: [
+      { heading: 'The full soft-goods workroom', body: '[DRAFT] Windows, furniture, pillows, and bedding under one roof, so a whole room can be coordinated in one place. Most local shops do only windows or only upholstery.' },
+    ],
+  },
+];

@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { business } from '../data/business';
+
+const title = 'Reviews | Creative Stitches Workroom, Grand Blanc MI';
+const description = 'What clients say about Creative Stitches Workroom, a custom drapery and upholstery workroom in Grand Blanc, Michigan.';
+
+// TODO pull real, attributed reviews after the call (Google + Birdeye 4.7/8 +
+// Facebook 5.0). Do not fabricate quotes; surface only real ones with permission.
+---
+<Base title={title} description={description}>
+  <section>
+    <div class="wrap">
+      <h1>What clients say</h1>
+      <p class="draft">Placeholder, import real reviews (Google / Birdeye 4.7 of 8 / Facebook 5.0) with attribution before launch. No invented quotes.</p>
+      <p class="lead">{business.name} has earned strong reviews across Google, Birdeye, and Facebook.</p>
+      <p><a class="btn" href={`tel:${business.phoneE164}`}>Call {business.phone}</a></p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://creativestitchesworkroom.com/sitemap-index.xml

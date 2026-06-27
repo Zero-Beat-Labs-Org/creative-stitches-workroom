@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Gallery | Creative Stitches Workroom, Grand Blanc MI';
+const description = 'Project photos of custom draperies, Roman shades, upholstery, and window treatments by Creative Stitches Workroom in Grand Blanc, Michigan.';
+
+// TODO replace placeholders with migrated Facebook/Houzz project photos after the
+// admin handoff. Each image needs descriptive alt text (service + city).
+const placeholders = Array.from({ length: 9 }, (_, i) => i + 1);
+---
+<Base title={title} description={description}>
+  <section>
+    <div class="wrap">
+      <h1>Project gallery</h1>
+      <p class="lead">A selection of recent work. More photos coming soon.</p>
+      <p class="draft">Placeholder grid, swap in real project photos after the Facebook/Houzz export.</p>
+      <div class="gallery-grid">
+        {placeholders.map((n) => (
+          <div class="gallery-ph">Project photo {n}</div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
