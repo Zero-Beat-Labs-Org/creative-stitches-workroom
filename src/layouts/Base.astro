@@ -27,7 +27,7 @@ const localBusinessSchema = {
     postalCode: addr.postalCode,
     addressCountry: addr.country,
   },
-  areaServed: business.areaServed.map((name) => ({ '@type': 'Place', name })),
+  areaServed: [...business.areaServed, ...business.extendedArea].map((name) => ({ '@type': 'Place', name })),
   sameAs: business.sameAs,
   openingHoursSpecification: [
     {
@@ -119,7 +119,6 @@ const path = Astro.url.pathname;
         <div>
           <p>Serving Grand Blanc &amp; Genesee County, plus designer trade.</p>
           <p><a href="https://www.linkedin.com/company/creativestitchesworkroom">LinkedIn</a></p>
-          <p class="footer-credit">Site by ZeroBeatLabs</p>
         </div>
       </div>
     </footer>

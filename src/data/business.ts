@@ -4,7 +4,7 @@
 export const business = {
   name: 'Creative Stitches Workroom',
   owner: 'Sherrei Pauls',
-  tagline: 'Custom drapery, window treatments, and upholstery, handcrafted in Grand Blanc, Michigan.',
+  tagline: 'Custom window treatments, Roman shades, and upholstery, handcrafted in Grand Blanc, Michigan.',
   yearsInBusiness: '30+',
   phone: '810-423-3416',
   phoneE164: '+18104233416',
@@ -22,6 +22,12 @@ export const business = {
   areaServed: [
     'Grand Blanc', 'Flint', 'Burton', 'Davison', 'Fenton', 'Lake Fenton',
     'Swartz Creek', 'Goodrich', 'Atlas', 'Holly', 'Ortonville', 'Genesee County',
+  ],
+  // Extended / travel reach (roughly within a two-hour drive).
+  extendedArea: [
+    'Metro Detroit', 'Detroit', 'Birmingham', 'Bloomfield Hills', 'Troy',
+    'Rochester', 'Clarkston', 'Brighton', 'Howell', 'Ann Arbor', 'Lansing',
+    'Saginaw', 'Bay City', 'Midland',
   ],
   travelNote: 'We travel up to roughly two hours for the right project, reaching Metro Detroit and mid-Michigan, and ship finished work beyond that.',
   // Live profiles only (becomes schema sameAs).
