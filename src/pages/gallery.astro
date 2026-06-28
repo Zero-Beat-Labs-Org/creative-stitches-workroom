@@ -1,24 +1,23 @@
 ---
 import Base from '../layouts/Base.astro';
+import { business } from '../data/business';
 
 const title = 'Gallery | Creative Stitches Workroom, Grand Blanc MI';
 const description = 'Project photos of custom draperies, Roman shades, upholstery, and window treatments by Creative Stitches Workroom in Grand Blanc, Michigan.';
 
-// TODO replace placeholders with migrated Facebook/Houzz project photos after the
-// admin handoff. Each image needs descriptive alt text (service + city).
-const placeholders = Array.from({ length: 9 }, (_, i) => i + 1);
+const houzz = business.sameAs.find((u) => u.includes('houzz'));
+const facebook = business.sameAs.find((u) => u.includes('facebook'));
 ---
 <Base title={title} description={description}>
   <section>
     <div class="wrap">
       <h1>Project gallery</h1>
-      <p class="lead">A selection of recent work. More photos coming soon.</p>
-      <p class="draft">Placeholder grid, swap in real project photos after the Facebook/Houzz export.</p>
-      <div class="gallery-grid">
-        {placeholders.map((n) => (
-          <div class="gallery-ph">Project photo {n}</div>
-        ))}
-      </div>
+      <p class="lead">A full gallery of recent work is on its way. In the meantime, browse decades of projects on our Houzz and Facebook pages.</p>
+      <p>
+        {houzz && <a class="btn" href={houzz}>See our work on Houzz</a>}
+        {facebook && <a class="btn btn-secondary" href={facebook}>Photos on Facebook</a>}
+      </p>
+      <p>Have a project in mind? <a href={`tel:${business.phoneE164}`}>Call {business.phone}</a> or <a href="/contact/">send us the details</a>.</p>
     </div>
   </section>
 </Base>

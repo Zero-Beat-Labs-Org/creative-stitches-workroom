@@ -28,11 +28,19 @@ const localBusinessSchema = {
   },
   areaServed: business.areaServed.map((name) => ({ '@type': 'Place', name })),
   sameAs: business.sameAs,
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '17:00',
+    },
+  ],
   makesOffer: services.map((s) => ({
     '@type': 'Offer',
     itemOffered: { '@type': 'Service', name: s.name },
   })),
-  // TODO add geo (exact pin) and openingHoursSpecification after the client call.
+  // geo (exact pin) added with the Apple Business Connect step.
 };
 
 const nav = [
@@ -97,6 +105,7 @@ const path = Astro.url.pathname;
         <div>
           <p>{addr.street}<br />{addr.city}, {addr.region} {addr.postalCode}</p>
           <p><a href={`tel:${business.phoneE164}`}>{business.phone}</a></p>
+          <p>{business.hours}</p>
         </div>
         <div>
           <p>Serving Grand Blanc &amp; Genesee County, plus designer trade.</p>

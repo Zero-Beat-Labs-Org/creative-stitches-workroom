@@ -13,7 +13,6 @@ const { service } = Astro.props;
     <div class="wrap">
       <h1>{service.h1}</h1>
       <p class="lead">{service.intro}</p>
-      <p class="draft">DRAFT copy, confirm details with the client before launch.</p>
       {service.sections.map((sec) => (
         <>
           <h2>{sec.heading}</h2>

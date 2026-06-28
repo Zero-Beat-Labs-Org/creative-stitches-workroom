@@ -5,16 +5,21 @@ import { business } from '../data/business';
 const title = 'Reviews | Creative Stitches Workroom, Grand Blanc MI';
 const description = 'What clients say about Creative Stitches Workroom, a custom drapery and upholstery workroom in Grand Blanc, Michigan.';
 
-// TODO pull real, attributed reviews after the call (Google + Birdeye 4.7/8 +
-// Facebook 5.0). Do not fabricate quotes; surface only real ones with permission.
+const facebook = business.sameAs.find((u) => u.includes('facebook'));
+const yelp = business.sameAs.find((u) => u.includes('yelp'));
+const birdeye = business.sameAs.find((u) => u.includes('birdeye'));
 ---
 <Base title={title} description={description}>
   <section>
     <div class="wrap">
       <h1>What clients say</h1>
-      <p class="draft">Placeholder, import real reviews (Google / Birdeye 4.7 of 8 / Facebook 5.0) with attribution before launch. No invented quotes.</p>
-      <p class="lead">{business.name} has earned strong reviews across Google, Birdeye, and Facebook.</p>
-      <p><a class="btn" href={`tel:${business.phoneE164}`}>Call {business.phone}</a></p>
+      <p class="lead">{business.name} has earned strong reviews across Google, Facebook, and Birdeye. Read them, or add your own.</p>
+      <p>
+        {facebook && <a class="btn btn-secondary" href={facebook}>Reviews on Facebook</a>}
+        {yelp && <a class="btn btn-secondary" href={yelp}>Reviews on Yelp</a>}
+        {birdeye && <a class="btn btn-secondary" href={birdeye}>Reviews on Birdeye</a>}
+      </p>
+      <p>Worked with us? <a href={`tel:${business.phoneE164}`}>Call {business.phone}</a>, we would love your feedback.</p>
     </div>
   </section>
 </Base>

@@ -6,9 +6,10 @@ const title = 'Contact | Creative Stitches Workroom, Grand Blanc MI';
 const description = 'Contact Creative Stitches Workroom in Grand Blanc, Michigan for custom draperies, Roman shades, window treatments, and upholstery. Call 810-423-3416.';
 
 const addr = business.address;
-// Static site: the form posts to Web3Forms (free). TODO add the access key once the
-// branded Workspace inbox exists, then point notifications there.
+// Static site form posts to Web3Forms (free). Set a real key to enable the form;
+// until then the page shows a call-first block so nothing is broken at launch.
 const WEB3FORMS_KEY = 'TODO-WEB3FORMS-ACCESS-KEY';
+const formEnabled = !WEB3FORMS_KEY.startsWith('TODO');
 ---
 <Base title={title} description={description}>
   <section>
@@ -18,24 +19,28 @@ const WEB3FORMS_KEY = 'TODO-WEB3FORMS-ACCESS-KEY';
 
       <p>
         <strong>Phone:</strong> <a href={`tel:${business.phoneE164}`}>{business.phone}</a><br />
-        <strong>Workroom:</strong> {addr.street}, {addr.city}, {addr.region} {addr.postalCode}
+        <strong>Workroom:</strong> {addr.street}, {addr.city}, {addr.region} {addr.postalCode}<br />
+        <strong>Hours:</strong> {business.hours}
       </p>
 
-      <p class="draft">Form is wired to Web3Forms but needs an access key + the branded inbox before launch.</p>
-      <form action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
-        <input type="hidden" name="subject" value="New inquiry from creativestitchesworkroom.com" />
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-        <label for="name">Name</label>
-        <input id="name" type="text" name="name" required />
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required />
-        <label for="phone">Phone</label>
-        <input id="phone" type="tel" name="phone" />
-        <label for="message">What can we make for you?</label>
-        <textarea id="message" name="message" rows="5" required></textarea>
-        <p style="margin-top:1rem"><button class="btn" type="submit">Send</button></p>
-      </form>
+      {formEnabled ? (
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+          <input type="hidden" name="subject" value="New inquiry from creativestitchesworkroom.com" />
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
+          <label for="name">Name</label>
+          <input id="name" type="text" name="name" required />
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required />
+          <label for="phone">Phone</label>
+          <input id="phone" type="tel" name="phone" />
+          <label for="message">What can we make for you?</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+          <p style="margin-top:1rem"><button class="btn" type="submit">Send</button></p>
+        </form>
+      ) : (
+        <p><a class="btn" href={`tel:${business.phoneE164}`}>Call {business.phone}</a></p>
+      )}
     </div>
   </section>
 </Base>
