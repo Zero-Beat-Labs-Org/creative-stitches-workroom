@@ -1,9 +1,10 @@
 ---
 import Base from '../layouts/Base.astro';
 import { business } from '../data/business';
+import { gallery } from '../data/gallery';
 
 const title = 'Gallery | Creative Stitches Workroom, Grand Blanc MI';
-const description = 'Project photos of custom draperies, Roman shades, upholstery, and window treatments by Creative Stitches Workroom in Grand Blanc, Michigan.';
+const description = 'Project photos of custom draperies, Roman shades, upholstery, and window treatments handcrafted by Creative Stitches Workroom in Grand Blanc, Michigan.';
 
 const houzz = business.sameAs.find((u) => u.includes('houzz'));
 const facebook = business.sameAs.find((u) => u.includes('facebook'));
@@ -11,11 +12,21 @@ const facebook = business.sameAs.find((u) => u.includes('facebook'));
 <Base title={title} description={description}>
   <section>
     <div class="wrap">
+      <p class="eyebrow">Our work</p>
       <h1>Project gallery</h1>
-      <p class="lead">A full gallery of recent work is on its way. In the meantime, browse decades of projects on our Houzz and Facebook pages.</p>
+      <p class="lead">A selection of recent custom drapery, Roman shades, upholstery, pillows, and window treatments, handcrafted in our Grand Blanc workroom.</p>
+
+      <div class="gallery-masonry">
+        {gallery.map((g) => (
+          <img src={g.src} alt={g.alt} loading="lazy" decoding="async" />
+        ))}
+      </div>
+
+      <hr class="rule" style="margin-top:2.5rem" />
       <p>
-        {houzz && <a class="btn" href={houzz}>See our work on Houzz</a>}
-        {facebook && <a class="btn btn-secondary" href={facebook}>Photos on Facebook</a>}
+        {houzz && <a class="btn btn-secondary" href={houzz}>More on Houzz</a>}
+        {' '}
+        {facebook && <a class="btn btn-secondary" href={facebook}>More on Facebook</a>}
       </p>
       <p>Have a project in mind? <a href={`tel:${business.phoneE164}`}>Call {business.phone}</a> or <a href="/contact/">send us the details</a>.</p>
     </div>
