@@ -17,6 +17,7 @@ const localBusinessSchema = {
   description: business.tagline,
   url: business.url,
   telephone: business.phoneE164,
+  ...(business.email ? { email: business.email } : {}),
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
@@ -64,7 +65,12 @@ const path = Astro.url.pathname;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#3a4a3f" />
+    <link rel="alternate icon" href="/favicon.ico" sizes="any" />
+    <meta name="theme-color" content="#2e2a29" />
+    {/* ponytail: Google Fonts (one webfont) for the elegant serif display; the high-end aesthetic is the explicit ask */}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -76,7 +82,9 @@ const path = Astro.url.pathname;
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <div class="wrap header-inner">
-        <a class="site-name" href="/">{business.name}</a>
+        <a class="site-logo" href="/" aria-label={`${business.name} home`}>
+          <img src="/logo.svg" alt={business.name} width="208" height="48" />
+        </a>
         <nav class="site-nav" aria-label="Main navigation">
           <ul>
             {nav.map((item) => (
@@ -105,6 +113,7 @@ const path = Astro.url.pathname;
         <div>
           <p>{addr.street}<br />{addr.city}, {addr.region} {addr.postalCode}</p>
           <p><a href={`tel:${business.phoneE164}`}>{business.phone}</a></p>
+          {business.email && <p><a href={`mailto:${business.email}`}>{business.email}</a></p>}
           <p>{business.hours}</p>
         </div>
         <div>

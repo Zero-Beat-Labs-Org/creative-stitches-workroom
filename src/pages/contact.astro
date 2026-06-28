@@ -19,6 +19,7 @@ const formEnabled = !WEB3FORMS_KEY.startsWith('TODO');
 
       <p>
         <strong>Phone:</strong> <a href={`tel:${business.phoneE164}`}>{business.phone}</a><br />
+        {business.email && (<><strong>Email:</strong> <a href={`mailto:${business.email}`}>{business.email}</a><br /></>)}
         <strong>Workroom:</strong> {addr.street}, {addr.city}, {addr.region} {addr.postalCode}<br />
         <strong>Hours:</strong> {business.hours}
       </p>

@@ -8,7 +8,7 @@ export const business = {
   yearsInBusiness: '30+',
   phone: '810-423-3416',
   phoneE164: '+18104233416',
-  email: '', // branded inbox added once Google Workspace is provisioned
+  email: 'sherrei@creativestitchesworkroom.com',
   url: 'https://creativestitchesworkroom.com',
   address: {
     street: '6182 S Case Ave',
