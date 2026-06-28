@@ -27,6 +27,7 @@ export const business = {
   // Live profiles only (becomes schema sameAs).
   sameAs: [
     'https://www.facebook.com/creativestitchesworkroom/',
+    'https://www.linkedin.com/company/creativestitchesworkroom',
     'https://www.houzz.com/professionals/upholstery/creative-stitches-workroom-pfvwus-pf~470485693',
     'https://www.yelp.com/biz/creative-stitches-grand-blanc',
     'https://reviews.birdeye.com/creative-stitches-148885114480797',
@@ -55,7 +56,7 @@ export const services: Service[] = [
     intro: 'Every panel is cut, sewn, and finished by hand in our Grand Blanc workroom, sized to your windows and your fabric, not pulled off a big-box shelf.',
     sections: [
       { heading: 'Built for your windows', body: 'We make pinch-pleat, ripplefold, grommet, rod-pocket, and tab-top draperies in the fabric, lining, and fullness you choose. Full-height panels, puddled hems, and layered sheers, measured on site and fabricated to fit.' },
-      { heading: 'Work with a real workroom', body: 'After more than 30 years serving Grand Blanc and Genesee County, we handle one window or a whole home, and we work directly with interior designers on customer-owned-material projects.' },
+      { heading: 'Work with a real workroom', body: 'After more than 30 years serving Grand Blanc and Genesee County, we handle one window or a whole home, and we work directly with interior designers, fabricating in the fabric you supply.' },
     ],
   },
   {
