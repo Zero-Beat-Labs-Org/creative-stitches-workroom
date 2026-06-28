@@ -49,7 +49,21 @@ export const business = {
 // Facebook, Houzz, or Birdeye with attribution.
 export type Review = { quote: string; name: string; source: string };
 export const reviews: Review[] = [
-  // { quote: '...', name: 'First L.', source: 'Google' },
+  {
+    quote: `I have the most beautiful and elegant draperies and a valance that were made by Creative Stitches Workroom. The workmanship and quality are absolutely the best! I couldn't be happier.`,
+    name: 'Dawn C.',
+    source: 'Facebook',
+  },
+  {
+    quote: `I had a couch reupholstered. I was going to have Sherrei do a slip cover because I've never seen slip covers done as well as her projects. When she saw my couch, it became pretty clear slip covers wasn't an option. There were some structural problems she had repaired, and literally had my couch done in a week! We love the workmanship.`,
+    name: 'Nancy P.',
+    source: 'Facebook',
+  },
+  {
+    quote: `Excellent custom work. You visualize it, Creative Stitches brings it on.`,
+    name: 'Barry H.',
+    source: 'Facebook',
+  },
 ];
 
 export type Service = {
