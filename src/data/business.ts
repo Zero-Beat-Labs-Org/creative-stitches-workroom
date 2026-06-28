@@ -12,9 +12,9 @@ export const business = {
   url: 'https://creativestitchesworkroom.com',
   // GBP "Get more reviews" share link (https://g.page/r/.../review). Set to turn
   // on the primary "Leave a review on Google" CTA on the testimonials page.
-  reviewLink: '',
+  reviewLink: 'https://g.page/r/CeIpMzT3O080EBM/review',
   // Public Google/Maps URL to read reviews (optional, secondary link).
-  googleProfile: '',
+  googleProfile: 'https://g.page/r/CeIpMzT3O080EBM',
   address: {
     street: '6182 S Case Ave',
     city: 'Grand Blanc',
