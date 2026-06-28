@@ -1,25 +1,49 @@
 ---
 import Base from '../layouts/Base.astro';
-import { business } from '../data/business';
+import { business, reviews } from '../data/business';
 
 const title = 'Reviews | Creative Stitches Workroom, Grand Blanc MI';
-const description = 'What clients say about Creative Stitches Workroom, a custom drapery and upholstery workroom in Grand Blanc, Michigan.';
+const description = 'What clients say about Creative Stitches Workroom, a custom window treatment and upholstery workroom in Grand Blanc, Michigan.';
 
 const facebook = business.sameAs.find((u) => u.includes('facebook'));
-const yelp = business.sameAs.find((u) => u.includes('yelp'));
+const houzz = business.sameAs.find((u) => u.includes('houzz'));
 const birdeye = business.sameAs.find((u) => u.includes('birdeye'));
 ---
 <Base title={title} description={description}>
   <section>
     <div class="wrap">
+      <p class="eyebrow">Reviews</p>
       <h1>What clients say</h1>
-      <p class="lead">{business.name} has earned strong reviews across Google, Facebook, and Birdeye. Read them, or add your own.</p>
+      <p class="lead">{business.name} has earned strong reviews across Google, Facebook, Houzz, and Birdeye, from designers and homeowners alike.</p>
+
       <p>
-        {facebook && <a class="btn btn-secondary" href={facebook}>Reviews on Facebook</a>}
-        {yelp && <a class="btn btn-secondary" href={yelp}>Reviews on Yelp</a>}
-        {birdeye && <a class="btn btn-secondary" href={birdeye}>Reviews on Birdeye</a>}
+        {business.reviewLink
+          ? <a class="btn" href={business.reviewLink}>Leave a review on Google</a>
+          : <a class="btn" href={`tel:${business.phoneE164}`}>Call {business.phone}</a>}
       </p>
-      <p>Worked with us? <a href={`tel:${business.phoneE164}`}>Call {business.phone}</a>, we would love your feedback.</p>
+
+      {reviews.length > 0 && (
+        <div class="grid">
+          {reviews.map((r) => (
+            <blockquote class="card review">
+              <p>&ldquo;{r.quote}&rdquo;</p>
+              <footer>{r.name} <span class="review-src">&middot; {r.source}</span></footer>
+            </blockquote>
+          ))}
+        </div>
+      )}
+
+      <h2>Read more reviews</h2>
+      <p>
+        {business.googleProfile && <a class="btn btn-secondary" href={business.googleProfile}>Google</a>}
+        {' '}
+        {facebook && <a class="btn btn-secondary" href={facebook}>Facebook</a>}
+        {' '}
+        {houzz && <a class="btn btn-secondary" href={houzz}>Houzz</a>}
+        {' '}
+        {birdeye && <a class="btn btn-secondary" href={birdeye}>Birdeye</a>}
+      </p>
+      <p>Worked with us? We would be grateful for a <strong>Google review</strong>, it is the best way to help other Grand Blanc homeowners and designers find us.</p>
     </div>
   </section>
 </Base>

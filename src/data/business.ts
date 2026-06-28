@@ -10,6 +10,11 @@ export const business = {
   phoneE164: '+18104233416',
   email: 'sherrei@creativestitchesworkroom.com',
   url: 'https://creativestitchesworkroom.com',
+  // GBP "Get more reviews" share link (https://g.page/r/.../review). Set to turn
+  // on the primary "Leave a review on Google" CTA on the testimonials page.
+  reviewLink: '',
+  // Public Google/Maps URL to read reviews (optional, secondary link).
+  googleProfile: '',
   address: {
     street: '6182 S Case Ave',
     city: 'Grand Blanc',
@@ -39,6 +44,13 @@ export const business = {
     'https://reviews.birdeye.com/creative-stitches-148885114480797',
   ],
 } as const;
+
+// Real customer reviews only (never fabricate). Add quotes copied from Google,
+// Facebook, Houzz, or Birdeye with attribution.
+export type Review = { quote: string; name: string; source: string };
+export const reviews: Review[] = [
+  // { quote: '...', name: 'First L.', source: 'Google' },
+];
 
 export type Service = {
   slug: string;
