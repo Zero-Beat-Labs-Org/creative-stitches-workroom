@@ -41,10 +41,12 @@ export type Service = {
   h1: string;
   intro: string;
   sections: { heading: string; body: string }[];
+  imageCategories: string[]; // gallery categories used to source photos for this service
 };
 
 export const services: Service[] = [
   {
+    imageCategories: ['Drapery'],
     slug: 'draperies-curtains',
     name: 'Custom Draperies & Curtains',
     title: 'Custom Drapery & Curtains in Grand Blanc, MI | Creative Stitches Workroom',
@@ -57,6 +59,7 @@ export const services: Service[] = [
     ],
   },
   {
+    imageCategories: ['Roman shades'],
     slug: 'roman-shades',
     name: 'Custom Roman Shades',
     title: 'Custom Roman Shades in Grand Blanc & Genesee County, MI | Creative Stitches Workroom',
@@ -68,6 +71,7 @@ export const services: Service[] = [
     ],
   },
   {
+    imageCategories: ['Upholstery'],
     slug: 'upholstery',
     name: 'Upholstery & Reupholstery',
     title: 'Upholstery & Reupholstery in Grand Blanc, MI | Creative Stitches Workroom',
@@ -79,6 +83,7 @@ export const services: Service[] = [
     ],
   },
   {
+    imageCategories: ['Pillows and bedding'],
     slug: 'pillows-cushions',
     name: 'Pillows & Cushions',
     title: 'Custom Pillows & Cushions in Michigan | Creative Stitches Workroom',
@@ -90,6 +95,7 @@ export const services: Service[] = [
     ],
   },
   {
+    imageCategories: ['Drapery', 'Roman shades'],
     slug: 'window-treatments',
     name: 'Window Treatments',
     title: 'Custom Window Treatments in Grand Blanc, MI | Creative Stitches Workroom',

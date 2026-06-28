@@ -13,7 +13,7 @@ export const gallery: GalleryItem[] = [
   { src: '/gallery/2026-04-03-roman-shades-01-this-beautiful-picture-framed-roman-shade-was.webp', alt: 'This beautiful picture framed Roman Shade was made to be functional by Creative Stitches Workroom in Grand Blanc, MI.', category: 'Roman shades' },
   { src: '/gallery/2026-02-12-custom-workroom-15-sweet-desk-chair-got-some-new-fabric.webp', alt: 'Sweet desk chair got some new fabric today to spruce up the desk area by Creative Stitches Workroom in Grand Blanc, MI.', category: 'Custom workroom' },
   { src: '/gallery/2025-12-26-upholstery-01-i-updated-this-6-sided-unique-ottoman.webp', alt: 'I updated this 6 sided unique ottoman by Creative Stitches Workroom in Grand Blanc, MI.', category: 'Upholstery' },
-  { src: '/gallery/2026-03-06-drapery-02-french-pleat-panels-were-created-for-this.webp', alt: 'French pleat panels were created for this nice dinning room by Creative Stitches Workroom in Grand Blanc, MI.', category: 'Drapery' },
+  { src: '/gallery/2026-03-06-drapery-02-french-pleat-panels-were-created-for-this.webp', alt: 'French pleat panels were created for this dining room by Creative Stitches Workroom in Grand Blanc, MI.', category: 'Drapery' },
   { src: '/gallery/2026-03-06-pillows-bedding-03-baby-bedskirt-and-pillows-add-color-to.webp', alt: 'Baby bedskirt and pillows add color to this sweet nursery by Creative Stitches Workroom in Grand Blanc, MI.', category: 'Pillows and bedding' },
   { src: '/gallery/2026-03-06-drapery-04-green-velvet-was-used-to-create-a.webp', alt: 'Green velvet was used to create a large order of the modern 2 finger pinched pleat on these panels by Creative Stitches Workroom in Grand Blanc, MI.', category: 'Drapery' },
   { src: '/gallery/2026-02-02-custom-workroom-07-creative-stitches-workroom-custom-workroom-project.webp', alt: 'Custom workroom project by Creative Stitches Workroom in Grand Blanc, MI.', category: 'Custom workroom' },
@@ -28,3 +28,6 @@ export const gallery: GalleryItem[] = [
   { src: '/gallery/2026-02-12-custom-workroom-09-creative-stitches-workroom-custom-workroom-project.webp', alt: 'Custom workroom project by Creative Stitches Workroom in Grand Blanc, MI.', category: 'Custom workroom' },
   { src: '/gallery/2026-01-23-custom-workroom-04-creative-stitches-workroom-custom-workroom-project.webp', alt: 'Custom workroom project by Creative Stitches Workroom in Grand Blanc, MI.', category: 'Custom workroom' },
 ];
+
+export const imagesForCategories = (cats: string[]): GalleryItem[] =>
+  gallery.filter((g) => cats.includes(g.category));

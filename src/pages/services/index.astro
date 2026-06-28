@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { services } from '../../data/business';
+import { imagesForCategories } from '../../data/gallery';
 
 const title = 'Services | Creative Stitches Workroom, Grand Blanc MI';
 const description = 'Custom draperies and curtains, Roman shades, upholstery and reupholstery, pillows and cushions, and window treatments, handcrafted in Grand Blanc, Michigan.';
@@ -11,12 +12,16 @@ const description = 'Custom draperies and curtains, Roman shades, upholstery and
       <h1>Our services</h1>
       <p class="lead">A full soft-goods workroom serving Grand Blanc and Genesee County.</p>
       <div class="grid">
-        {services.map((s) => (
-          <a class="card" href={`/services/${s.slug}/`}>
-            <h3>{s.name}</h3>
-            <p>{s.intro}</p>
-          </a>
-        ))}
+        {services.map((s) => {
+          const img = imagesForCategories(s.imageCategories)[0];
+          return (
+            <a class="card" href={`/services/${s.slug}/`}>
+              {img && <img class="card-img" src={img.src} alt={img.alt} loading="lazy" decoding="async" />}
+              <h3>{s.name}</h3>
+              <p>{s.intro}</p>
+            </a>
+          );
+        })}
       </div>
     </div>
   </section>
