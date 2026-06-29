@@ -7,13 +7,25 @@ const description = 'Creative Stitches Workroom handcrafts custom window treatme
 ---
 <Base title={title} description={description}>
   <section class="hero">
-    <div class="wrap">
-      <h1>Custom window treatments &amp; upholstery, made in Grand Blanc</h1>
-      <p class="lead">Custom window treatments, Roman shades, and upholstery, handcrafted in Grand Blanc, Michigan. A full soft-goods workroom: windows, furniture, pillows, and bedding under one roof, made to measure for {business.yearsInBusiness} years.</p>
-      <p>
-        <a class="btn" href={`tel:${business.phoneE164}`}>Call {business.phone}</a>
-        <a class="btn btn-secondary" href="/contact/">Request a consultation</a>
-      </p>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1>Custom window treatments &amp; upholstery, made in Grand Blanc</h1>
+        <p class="lead">Custom window treatments, Roman shades, and upholstery, handcrafted in Grand Blanc, Michigan. A full soft-goods workroom: windows, furniture, pillows, and bedding under one roof, made to measure for {business.yearsInBusiness} years.</p>
+        <p>
+          <a class="btn" href={`tel:${business.phoneE164}`}>Call {business.phone}</a>
+          <a class="btn btn-secondary" href="/contact/">Request a consultation</a>
+        </p>
+      </div>
+      <div class="hero-media">
+        <img
+          src="/images/home-hero.webp"
+          width="1600"
+          height="1200"
+          alt="Buffalo-check upholstered armchairs, a skirted round ottoman, and floral drapery panels handcrafted by Creative Stitches Workroom in Grand Blanc, MI."
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
     </div>
   </section>
 

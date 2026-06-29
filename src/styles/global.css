@@ -112,6 +112,14 @@ section { padding: 3.25rem 0; }
 .hero p { max-width: 42rem; }
 .hero .lead { color: #d9d2c4; }
 .hero .rule { background: rgba(201, 169, 97, 0.6); }
+.hero-grid { display: grid; gap: 2.5rem; align-items: center; }
+.hero-media img {
+  width: 100%; height: auto; display: block; border-radius: var(--radius);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+@media (min-width: 52rem) {
+  .hero-grid { grid-template-columns: 1.1fr 1fr; }
+}
 
 /* Buttons */
 .btn {
