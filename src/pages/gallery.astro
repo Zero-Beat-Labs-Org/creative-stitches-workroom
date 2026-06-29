@@ -17,8 +17,16 @@ const facebook = business.sameAs.find((u) => u.includes('facebook'));
       <p class="lead">A selection of recent custom drapery, Roman shades, upholstery, pillows, and window treatments, handcrafted in our Grand Blanc workroom.</p>
 
       <div class="gallery-masonry">
-        {gallery.map((g) => (
-          <img src={g.src} alt={g.alt} loading="lazy" decoding="async" />
+        {gallery.map((g, i) => (
+          <img
+            src={g.src}
+            alt={g.alt}
+            width={g.w}
+            height={g.h}
+            loading={i < 4 ? 'eager' : 'lazy'}
+            fetchpriority={i < 4 ? 'high' : undefined}
+            decoding="async"
+          />
         ))}
       </div>
 
