@@ -175,7 +175,7 @@ section { padding: 3.25rem 0; }
   transition: box-shadow 0.15s, transform 0.15s;
 }
 .gallery-masonry img:hover { box-shadow: 0 10px 28px rgba(46, 42, 41, 0.18); transform: translateY(-2px); }
-@media (max-width: 40rem) { .gallery-masonry { columns: 2 9rem; } }
+@media (max-width: 40rem) { .gallery-masonry { columns: 1; } }
 
 /* Draft marker, removed before launch */
 .draft { background: #fff7e6; border-left: 3px solid var(--gold); padding: 0.5rem 0.85rem; font-size: 0.9rem; color: #6b5418; }
